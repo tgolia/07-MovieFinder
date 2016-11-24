@@ -1,0 +1,20 @@
+<div class="jumbotron text-center">
+    <h1>MovieNerd</h1>
+    <p>Build your MNC (MovieNerd Cred) by researching your favorite movies.</p>
+</div>
+<div class="btn-group btn-primary" role="group" aria-label="First group" style="border-radius: 25%">
+    <span>
+        <a ui-sref=".recentSearches" class="btn btn-primary">Recent Searches</a>
+    </span>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter movie title here..." ng-model='home.input'>
+            <span class="input-group-btn">
+                <a ui-sref=".search" class="btn btn-primary">Search</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div ui-view></div>
