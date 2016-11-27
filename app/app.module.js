@@ -17,8 +17,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     .state('home.search', {
         url: '/search',
         templateUrl: 'app/search/search.html',
-        controller: function($scope) {
-            $scope.dogs = ['This is going', 'to be a', 'list of movies!'];
+        controller: function($scope, $http) {
+            $http.get("http://www.omdbapi.com/?s=Star+Wars&type=movie")
+            .then(function(response) {
+            $scope.results = response.data;
+            console.log($scope.results);
+            })
+            //$scope.dogs = ['This is going', 'to be a', 'list of movies!'];
         }
     })
 
@@ -43,7 +48,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             },
 
             // the child views will be defined here (absolutely named)
-            'columnTwo@detail': { template: 'The image will go here!' }
+            'columnTwo@detail': { templateUrl: 'app/detail/detailPoster.html' }
 
         }
 
@@ -53,7 +58,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 
 // let's define the scotch controller that we call up in the about state
+
+
 routerApp.controller('detailController', function($scope) {
+
+    //detailController.$inject = ['$http'];
 
     $scope.message = 'test';
 
