@@ -19,11 +19,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'app/search/search.html',
         controller: function($scope, $http) {
             $http.get("http://www.omdbapi.com/?s=Star+Wars&type=movie")
-            .then(function(response) {
-            $scope.results = response.data;
-            console.log($scope.results);
-            })
-            //$scope.dogs = ['This is going', 'to be a', 'list of movies!'];
+                .then(function(response) {
+                    $scope.results = response.data;
+                    console.log($scope.results);
+                })
+                //$scope.dogs = ['This is going', 'to be a', 'list of movies!'];
         }
     })
 
@@ -39,7 +39,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         views: {
 
             // the main template will be placed here (relatively named)
-            '': { templateUrl: 'app/detail/detail.html' },
+            '': { 
+                templateUrl: 'app/detail/detail.html',
+                controller: 'detailController' 
+            },
 
             // for column one, we'll define a separate controller 
             'columnOne@detail': {
@@ -48,7 +51,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             },
 
             // the child views will be defined here (absolutely named)
-            'columnTwo@detail': { templateUrl: 'app/detail/detailPoster.html' }
+            'columnTwo@detail': { 
+                templateUrl: 'app/detail/detailPoster.html',
+                controller: 'detailController' 
+            }
 
         }
 
@@ -60,11 +66,17 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 // let's define the scotch controller that we call up in the about state
 
 
-routerApp.controller('detailController', function($scope) {
+routerApp.controller('detailController', function($scope, $http) {
 
     //detailController.$inject = ['$http'];
 
-    $scope.message = 'test';
+    $http.get("http://www.omdbapi.com/?t=Star+Wars&type=movie")
+        .then(function(response) {
+            $scope.detail = response.data;
+            console.log($scope.detail);
+        })
+
+    /*$scope.message = 'test';
 
     $scope.scotches = [{
         name: 'Macallan 12',
@@ -75,6 +87,6 @@ routerApp.controller('detailController', function($scope) {
     }, {
         name: 'Glenfiddich 1937',
         price: 20000
-    }];
+    }];*/
 
 });
