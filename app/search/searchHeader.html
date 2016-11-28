@@ -10,9 +10,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter movie title here..." ng-model='home.input'>
+            <input type="text" class="form-control" placeholder="Enter movie title here..." ng-model="input">
             <span class="input-group-btn">
-                <a ui-sref=".search" class="btn btn-primary">Search</a>
+                <a ui-sref=".search" ng-click="setSearchString(input); getSearchResults(input)" class="btn btn-primary">Search</a>
             </span>
         </div>
     </div>

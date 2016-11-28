@@ -1,17 +1,22 @@
 <!-- partial-home-list.html -->
 <!--<ul> -->
-   <!-- <li ng-repeat="result in results.Search"> {{result.Title}} <a ui-sref="detail" class="btn btn-info">Details</a></li> -->
+<!-- <li ng-repeat="result in results.Search"> {{result.Title}} <a ui-sref="detail" class="btn btn-info">Details</a></li> -->
 <!--</ul> -->
-<div class="col-md-12" style="margin-top: 20px;">
+<div class="filters" style="margin-bottom: 10px;">
+    <button class="btn btn-primary pull-left" ng-click="sortMovies(0)" style="border-radius: 10px 0px 0px 10px">{{alphaSortButton}}</button>
+    <button class="btn btn-primary pull-left" ng-click="sortMovies(1)" style="border-radius: 0px">{{yearSortButton}}</button>
+    <button class="btn btn-primary pull-left" ng-click="sortMovies(2)" style="border-radius: 0px 10px 10px 0px">Reset Sort</button>
+</div>
+<div class="col-md-12" style="margin-top: 10px;">
     <div class="panel panel-info">
         <div class="panel-heading panel-info">
-            <h3 class="panel-title panel-info">Search Results</h3>
+            <h3 class="panel-title panel-info">Search Results for "{{searchString}}"</h3>
         </div>
         <div class="panel-body">
             <table class="table table-striped table-hover">
-                <tr ng-repeat="result in results.Search" ng-click="" style="cursor: pointer; cursor: hand;">
+                <tr ng-repeat="result in results.Search | orderBy: sortCategory" style="cursor: pointer; cursor: hand;">
                     <td style="vertical-align: center;">{{result.Title}} ({{result.Year}})</td>
-                    <td style="text-align: center;"><a ui-sref="detail" class="btn btn-info">Details</a></td> 
+                    <td style="text-align: center;"><a ui-sref="detail" ng-click="setDetailString(result.Title)" class="btn btn-info">Details</a></td>
                 </tr>
             </table>
         </div>

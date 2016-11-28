@@ -7,5 +7,5 @@
 <a href="http://www.imdb.com/title/{{detail.imdbID}}">More info on the film's IMDB Page</a>
 <br><br>
 <span>
-    <a ui-sref="home.search" class="btn btn-primary" style="margin-bottom: 20px;">Back to Search</a>
+    <a ui-sref="home.search" ng-click="$state.reload('home'); getSearchResults(searchString)" class="btn btn-primary" style="margin-bottom: 20px;">Back to Search</a>
 </span>

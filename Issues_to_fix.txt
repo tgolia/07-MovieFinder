@@ -1,0 +1,7 @@
+Issues to fix:
+
+1) Search results for "" not updating
+
+2) Recent Searches isn't printing out (even though recentSearches array seems to be okay)
+
+3) Want to be able to see previous search results when click "back to search"
